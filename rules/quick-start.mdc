@@ -1,0 +1,101 @@
+---
+description: Guardrails for AI code generation - prevents bloated files, deep nesting, and duplication
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# AI Code Generation Guardrails
+
+> Rules to prevent AI from generating unmaintainable code.
+
+## Code Organization
+
+### File Structure
+- One component/class/module per file
+- File name matches the primary export
+- Group by feature/domain, not by type
+- Max 300 lines per file (split if larger)
+
+### Naming
+- Descriptive names over abbreviations (`getUserById` not `getUsr`)
+- Boolean variables start with `is`, `has`, `can`, `should`
+- Functions describe actions: `calculateTotal`, `validateEmail`
+- Constants in UPPER_SNAKE_CASE
+
+### Functions
+- Single responsibility: one function does one thing
+- Max 20 lines per function (extract helpers if longer)
+- Max 3 parameters (use object parameter if more)
+
+## Complexity Control
+
+### Keep It Flat
+- Max 3 levels of nesting
+- Max 15 cyclomatic complexity per function
+- No nested ternaries
+- Long boolean expressions → extract to named variable
+
+### No Duplication
+- Copy-paste = extract to function
+- Similar code in 2+ places → shared utility
+- Config values in one place
+
+## Architecture Basics
+
+### Separation of Concerns
+- Entry points handle I/O only (routing, request/response)
+- Business logic in dedicated modules
+- Data access separate from business logic
+- Dependencies flow one direction (entry → logic → data)
+
+## Documentation
+
+### Required Comments
+- WHY, not WHAT (code shows what, comments explain why)
+- Complex algorithms get explanations
+- Non-obvious business rules documented
+- TODO format: `// TODO(username): description`
+
+### Self-Documenting Code
+- Prefer clear names over comments
+- Extract magic numbers to named constants
+- Use types/interfaces as documentation
+
+## Error Handling
+
+### Always Handle Errors
+- Never swallow errors silently
+- Log with context (what was attempted, with what data)
+- User-facing errors must be friendly
+- System errors need debugging info
+
+### Fail Fast
+- Validate inputs at boundaries
+- Return early on invalid state
+- Use assertions for "should never happen"
+
+## Testing Mindset
+
+### Write Testable Code
+- Pure functions where possible
+- Dependency injection over hardcoding
+- Small, focused units
+- Avoid side effects in business logic
+
+### Test What Matters
+- Critical paths: auth, payments, data mutation
+- Edge cases and error conditions
+- Integration points
+
+## Consistency
+
+### Follow Existing Patterns
+- Match the style of surrounding code
+- Use existing utilities before creating new
+- Respect project conventions
+- When in doubt, check similar files
+
+### No Premature Optimization
+- Make it work, make it right, make it fast (in that order)
+- Profile before optimizing
+- Optimize bottlenecks, not everything
