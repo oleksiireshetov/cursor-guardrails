@@ -42,12 +42,13 @@ Drop-in `.mdc` files that constrain AI behavior:
 |------|-------------|
 | [`quick-start.mdc`](rules/quick-start.mdc) | Universal baseline — works for any project |
 
+See [rules/README.md](rules/README.md) for full details.
+
 
 ### [.cursorignore](.cursorignore)
 
 Prevents Cursor from wasting context on build artifacts, dependencies, and lock files. Copy to your project root.
 
-See [rules/README.md](rules/README.md) for full details.
 
 ## Context
 
