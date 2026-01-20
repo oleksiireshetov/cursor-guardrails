@@ -13,6 +13,23 @@ I shipped 38K lines of 100% AI-generated code with zero rules. Ran SonarQube:
 
 These guardrails exist so you don't end up in the same place.
 
+## Why These Rules?
+
+Most Cursor rules focus on syntax and formatting. These focus on **structure**.
+
+| What most rules do | What these rules do |
+|--------------------|---------------------|
+| Enforce code style | Enforce file size limits |
+| Language conventions | Prevent deep nesting |
+| Formatting preferences | Stop copy-paste duplication |
+| "How to write Flutter" | "How to not create tech debt" |
+
+These rules are **framework-agnostic** — they work for any language, any stack.
+
+They won't teach AI how to write Flutter or .NET. They'll stop AI from generating 4,500-line controllers regardless of what framework you use.
+
+**Use official rules for language conventions. Use these rules for structural sanity.**
+
 ## Repository Structure
 
 ```
